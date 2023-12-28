@@ -285,12 +285,12 @@ html {
     transition: 0.5s;
   }
 
-  .boton .boton2 {
-    margin-top: 2rem;
+  .menu .boton2 {
+    margin:7rem auto 0 auto;
     width: 50%;
     height: 50px;
-    border: none;
-    background-color: #000000;
+
+    background-color: #3498db;
     color: #ffffff;
     font-size: 16px;
     border-radius: 5px;
@@ -344,9 +344,7 @@ html {
     transition: 0.5s;
   }
 
-  #file1{
-   
-  }
+
  
   
 }
