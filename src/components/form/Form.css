@@ -331,7 +331,7 @@
     }
   
     .boton .boton1 {
-      margin-top: 5rem;
+      margin-top: 3rem;
       width: 20%;
       height: 50px;
       border: none;
@@ -406,7 +406,7 @@
     .file-container {
       width: 90%;
       max-height: 250px;
-      margin: 80px auto 100px auto;
+      margin: 100px auto 100px auto;
       padding: 10px;
       display: flex;
       flex-direction: column;
