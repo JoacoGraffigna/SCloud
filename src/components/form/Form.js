@@ -1,4 +1,5 @@
 import "../../App.css";
+import "./Form.css"
 import React, { useContext, useState } from "react";
 import { AppContext } from "../../context/AppContext";
 
