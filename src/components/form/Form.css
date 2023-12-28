@@ -197,7 +197,7 @@
   
   @media (max-width: 600px) {
     .titulo {
-      width: 50%;
+      min-width: 50%;
       display: flex;
       margin: auto;
       margin-bottom: 0;
@@ -220,7 +220,7 @@
   
     .boton .boton1 {
       margin-top: 5rem;
-      width: 50%;
+      min-width: 50%;
       height: 50px;
       border: none;
       background-color: #3498db;
