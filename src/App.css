@@ -297,9 +297,10 @@ html {
     transition: 0.5s;
   }
 
-  .menu .show{
-    overflow:hidden;
+  .menu.show{
+    height: 80%;
   }
+
   .menu h2 {
     margin-top: 4rem;
     font-size:40px;
