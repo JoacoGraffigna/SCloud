@@ -195,7 +195,7 @@
   }
 
   
-  @media (max-width: 600px) {
+  @media (max-width: 900px) {
     .titulo {
       min-width: 50%;
       display: flex;
