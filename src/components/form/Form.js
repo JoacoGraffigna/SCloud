@@ -1,5 +1,5 @@
 import "../../styles/form.css"
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AppContext } from "../../context/AppContext";
 
 function Form() {
@@ -9,9 +9,34 @@ function Form() {
   const [showModalAdd, setShowModalAdd] = useState(false);
   // const [menuVisible2, setMenuVisible2] = useState(false);
 
+  
   const handleModalAdd = () => {
     setShowModalAdd(!showModalAdd);
   };
+
+  
+  useEffect(() => {
+    setFilesList(getFilesLoaded())
+  }, [])
+
+  const localStorageKey = "filesLoaded"
+
+  const getFilesLoaded = () => {
+    return JSON.parse(localStorage.getItem(localStorageKey)) || []
+  }
+
+  const addNewFile = (newFile) => {
+    localStorage.setItem(localStorageKey, JSON.stringify([...filesList, newFile]))
+    setFilesList([...filesList, newFile]);
+  }
+  const deleteFile = (id) => {
+    const files = filesList.filter(file => file.id != id)
+    localStorage.setItem(localStorageKey, JSON.stringify(files))
+    setFilesList(files)
+  }
+
+
+
 
   // const toggleMenu2 = () => {
   //   setMenuVisible2(!menuVisible2);
@@ -28,11 +53,14 @@ function Form() {
           content: e.target.result,
           id: crypto.randomUUID(),
         };
-        let files = filesList;
-        files.push(newFile)
-        setFilesList(files);
+        // let files = filesList;
+        // files.push(newFile)
+        // setFilesList(files);
+        addNewFile(newFile)
+
       };
       read.readAsText(fileUploaded);
+      setShowModalAdd(false)
     }
   }
 
@@ -55,7 +83,7 @@ function Form() {
           <h3>Select file</h3>
           <input onChange={e => readFileUploaded(e)} type="file" />
         </form>
-        <button  className="button-save" onClick={handleModalAdd}>Save</button>
+        {/* <button  className="button-save" onClick={handleModalAdd}>Save</button> */}
       </div>
 
       {/* <div className={`menu2 ${menuVisible2 && 'show'}`}>
@@ -67,8 +95,13 @@ function Form() {
       <div className="file-container">
       {filesList.map(file => (
           <div key={file.id} className="file-item">
-            <p className="file-item-title">{file.name}</p>
-            <p className="file-item-content">{file.content}</p>
+            <div className="file-item-text">
+              <p className="file-item-text-title">{file.name}</p>
+              <p className="file-item-text-content">{file.content}</p>
+            </div>
+            <div className="file-item-tash" onClick={() => deleteFile(file.id)} >
+              <span>X</span>
+            </div>
           </div>
         ))}
       </div>

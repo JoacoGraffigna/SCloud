@@ -1,11 +1,10 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 const AppContext = createContext();
 
 function AppProvider({ children }) {
   
   const [filesList, setFilesList] = useState([]);
-
 
   const data = {
     filesList,
