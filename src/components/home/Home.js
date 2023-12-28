@@ -1,18 +1,19 @@
 import React from 'react'
-import '../../App.css';
-import Form from '../form/Form';
+import '../../styles/home.css'
+import { Form } from '../form/Form'
 import CLOUD from '../home/CLOUD.png'
 
-const Home = () => {
+function Home() {
   return (
-    <div className="App">
-     <div className='titulo'>
-     <img width={"200px"} src={CLOUD} alt='SCLOUD'/>
-     </div>
-    <Form></Form>      
+    <main className="home-container">
+      <picture className='title-container'>
+        <img src={CLOUD} alt='SCLOUD icon'/>
+      </picture>
 
-    </div>
+      <Form />    
+
+    </main>
   )
 }
 
-export default Home
+export { Home }

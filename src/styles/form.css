@@ -1,11 +1,11 @@
 
-.boton {
+.button-container {
   width: 100%;
   display: flex;
   justify-content: center;
 }
 
-.boton .boton1 {
+.button-container .button-add {
   width: 20%;
   height: 50px;
   border: none;
@@ -16,7 +16,7 @@
   transition: 0.5s;
 }
 
-.boton .boton1:hover {
+.button-container .button-add:hover {
   background-color: rgb(255, 255, 255);
   transition: 0.5s;
   color: black;
@@ -24,7 +24,7 @@
   transform: translateY(-3px);
 }
 
-.show .boton2 {
+.show .button-save {
   width: 20%;
   height: 50px;
   border: none;
@@ -36,7 +36,7 @@
   margin: 8rem;
 }
 
-.show .boton2:hover {
+.show .button-save:hover {
   background-color: rgb(255, 255, 255);
   transition: 0.5s;
   color: black;
@@ -46,7 +46,7 @@
 
 
 
-.boton .boton2 {
+.button-container .button-save {
   width: 20%;
   height: 50px;
   border: none;
@@ -58,7 +58,7 @@
   margin-top: 4rem;
 }
 
-.boton .boton2:hover {
+.button-container .button-save:hover {
   background-color: white;
   transition: 0.5s;
   color: black;
@@ -67,7 +67,7 @@
 }
 
 
-.menu {
+.modal-add {
   display: none;
   position: fixed;
   z-index: 1000;
@@ -81,11 +81,11 @@
 
 }
 
-.menu h1 {
+.modal-add h2 {
   margin-bottom: 3rem;
 }
 
-.menu.show {
+.modal-add.show {
   display: block;
   background-color: rgba(17, 17, 17, 1);
   width: 70%;
@@ -100,7 +100,7 @@
 }
 
 
-.menu2 {
+/* .menu2 {
   display: none;
   position: fixed;
   z-index: 1000;
@@ -109,17 +109,14 @@
   left: 50%;
   transform: translate(-50%, -50%);
   opacity: 0;
-  
-  transition: opacity 0.3s ease, transform 0.3s ease; /* Agregando transición para la opacidad y transform */
+} */
 
-}
-
-.menu2 h1 {
+/* .menu2 h1 {
   margin-top: 3rem;
   margin-bottom: 3rem;
-}
+} */
 
-.menu2.show {
+/* .menu2.show {
   display: block;
   background-color: rgba(17, 17, 17, 1);
   width: 70%;
@@ -128,17 +125,17 @@
   color: white;
   border-radius: 10px;
   opacity: 1;
-  transition: opacity 0.3s ease, transform 0.3s ease; /* Transiciones adicionales al abrir */
   transform: translate(-50%, -50%);
 }
 .menu2 h2 {
   font-size: 50px;
-}
+} */
+
 .file-container {
   width: 90%;
-  height: 350px;
-  margin: 50px auto 100px auto;
-  padding: 10px;
+  min-height: 350px;
+  margin: 50px auto 50px auto;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -147,18 +144,19 @@
   box-shadow: 0px 0px 50px 5px rgba(2, 3, 7, 0.96);
   border-radius: 10px;
 }
-.file {
+.file-item {
   border: 2px solid #010101;
   border-radius: .5rem;
   min-width: 200px;
+  height: min-content;
   color: #e1e1e1;
   padding: 10px;
   margin-bottom: 20px;
 }
-.file-title {
+.file-item-title {
   font-size: 2rem;
 }
-.file-content {
+.file-item-content {
   font-size: 1rem;
 }
 
@@ -173,13 +171,13 @@
   border-radius: 10px;
 }
 
-.menu h1 {
+.modal-add h1 {
   margin-top: 1rem;
   width: 100%;
   font-size: larger;
 }
 
-.close-btn {
+.button-close {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -194,33 +192,17 @@
     border-radius: 50%;
   }
 
-  
-  @media (max-width: 900px) {
-    .titulo {
-      min-width: 50%;
-      display: flex;
-      margin: auto;
-      margin-bottom: 0;
-      justify-content: center;
-      margin-top: 6rem;
-      background-color: white;
-      border-radius: 10px;
-    }
-  
-    .titulo img {
-      width: 181px;
-      height: 60px;
-    }
-  
-    .boton {
+
+  @media (max-width: 1366px) {
+    .button-container {
       width: 100%;
       display: flex;
       justify-content: center;
     }
   
-    .boton .boton1 {
-      margin-top: 5rem;
-      min-width: 50%;
+    .button-container .button-add {
+      margin-top: 3rem;
+      width: 20%;
       height: 50px;
       border: none;
       background-color: #3498db;
@@ -230,8 +212,8 @@
       transition: 0.5s;
     }
   
-    .menu .boton2 {
-      margin:7rem auto 0 auto;
+    .modal-add .button-save {
+      margin:6rem auto 0 auto;
       width: 50%;
       height: 50px;
   
@@ -242,20 +224,21 @@
       transition: 0.5s;
     }
   
-    .menu.show{
+    .modal-add.show{
       height: 80%;
     }
   
-    .menu h2 {
-      margin-top: 4rem;
+    .modal-add h2 {
+      margin-top: 1rem;
       font-size:40px;
       width: 100%;
     }
-    .menu  h3 {
-      margin-top: 5rem;
+    .modal-add  h3 {
+      margin-top: 2rem;
       font-size:25px;
       width: 100%;
     }
+/*     
     .form-label {
       display: block;
       font-size: small;
@@ -267,16 +250,14 @@
       padding: 10px 4px 10px 4px;
       border-radius: 10px;
       margin-top: 0;
-    }
-    .close-btn {
-     
+    } */
+
+    .button-close {
       font-size: 25px;
       background-color: white;
       color: black;
       border-radius: 20px;
-  
     }
-  
   
     .btn-primary {
       width: 80%;
@@ -293,8 +274,8 @@
   
     .file-container {
       width: 90%;
-      max-height: 200px;
-      margin: 80px auto 100px auto;
+      min-height: 200px;
+      margin: 100px auto 50px auto;
       padding: 10px;
       display: flex;
       flex-direction: column;
@@ -307,32 +288,17 @@
     
   }
 
-  @media (max-width: 1366px) {
-    .titulo {
-      width: 20%;
-      display: flex;
-      margin: auto;
-      margin-bottom: 0;
-      justify-content: center;
-      margin-top: 4rem;
-      background-color: white;
-      border-radius: 10px;
-    }
-  
-    .titulo img {
-      width: 181px;
-      height: 60px;
-    }
-  
-    .boton {
+
+  @media (max-width: 900px) {
+    .button-container {
       width: 100%;
       display: flex;
       justify-content: center;
     }
   
-    .boton .boton1 {
-      margin-top: 3rem;
-      width: 20%;
+    .button-container .button-add {
+      margin-top: 5rem;
+      min-width: 50%;
       height: 50px;
       border: none;
       background-color: #3498db;
@@ -342,7 +308,7 @@
       transition: 0.5s;
     }
   
-    .menu .boton2 {
+    .modal-add .button-save {
       margin:7rem auto 0 auto;
       width: 50%;
       height: 50px;
@@ -354,24 +320,28 @@
       transition: 0.5s;
     }
   
-    .menu.show{
+    .modal-add.show{
       height: 80%;
     }
   
-    .menu h2 {
-      margin-top: 4rem;
-      font-size:40px;
-      width: 100%;
-    }
-    .menu  h3 {
+    
+    .modal-add  h3 {
       margin-top: 5rem;
       font-size:25px;
       width: 100%;
     }
+
+    .modal-add h2 {
+      margin-top: 1rem;
+      margin-bottom: 0rem;
+      font-size:40px;
+      width: 100%;
+    }
+/* 
     .form-label {
       display: block;
       font-size: small;
-      margin-top: 3rem;
+      margin-top: 2rem;
     }
     
     .form-control {
@@ -379,14 +349,13 @@
       padding: 10px 4px 10px 4px;
       border-radius: 10px;
       margin-top: 0;
-    }
-    .close-btn {
-     
+    } */
+
+    .button-close {
       font-size: 25px;
       background-color: white;
       color: black;
       border-radius: 20px;
-  
     }
   
   
@@ -405,8 +374,7 @@
   
     .file-container {
       width: 90%;
-      max-height: 250px;
-      margin: 100px auto 100px auto;
+      margin: 80px auto 80px auto;
       padding: 10px;
       display: flex;
       flex-direction: column;
