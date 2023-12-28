@@ -3,6 +3,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 body,
@@ -12,9 +13,11 @@ html {
 
 .App {
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
   background: linear-gradient(to bottom, #161c38, #34429b);
   flex-direction: column;
+  min-width: 100vw;
   width: 100%;
 }
 
@@ -25,6 +28,10 @@ html {
   justify-content: center;
   background-color: white;
   border-radius: 10px
+}
+
+.container {
+  
 }
 
 .boton {
@@ -133,10 +140,39 @@ html {
   padding: 20px;
   color: white;
   border-radius: 10px;
-  font-size: 50px;
   opacity: 1;
   transition: opacity 0.3s ease, transform 0.3s ease; /* Transiciones adicionales al abrir */
   transform: translate(-50%, -50%);
+}
+.menu2 h2 {
+  font-size: 50px;
+}
+.file-container {
+  width: 90%;
+  height: auto;
+  min-height: 100px;
+  margin: 50px auto 100px auto;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #34429b;
+  box-shadow: 0px 0px 179px -25px rgba(2, 3, 7, 0.96);
+}
+.file {
+  border: 2px solid #010101;
+  border-radius: .5rem;
+  min-width: 200px;
+  color: #e1e1e1;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+.file-title {
+  font-size: 2rem;
+}
+.file-content {
+  font-size: 1rem;
 }
 
 .form-label {
