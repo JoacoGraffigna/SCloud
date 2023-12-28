@@ -59,6 +59,28 @@ html {
   transform: translateY(-3px);
 }
 
+.show .boton2 {
+  width: 20%;
+  height: 50px;
+  border: none;
+  background-color: #3498db;
+  color: #ffffff;
+  font-size: 35px;
+  border-radius: 5px;
+  transition: 0.5s;
+  margin: 8rem;
+}
+
+.show .boton2:hover {
+  background-color: rgb(255, 255, 255);
+  transition: 0.5s;
+  color: black;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 1);
+  transform: translateY(-3px);
+}
+
+
+
 .boton .boton2 {
   width: 20%;
   height: 50px;
@@ -275,20 +297,22 @@ html {
     transition: 0.5s;
   }
 
-
-  .menu h1 {
-    margin-top: 1rem;
-    font-size:35px;
+  .menu .show{
+    overflow:hidden;
+  }
+  .menu h2 {
+    margin-top: 4rem;
+    font-size:40px;
     width: 100%;
   }
-  .menu2 h1 {
+  .menu  h3 {
     margin-top: 5rem;
-    font-size:35px;
+    font-size:25px;
     width: 100%;
   }
   .form-label {
     display: block;
-    font-size: 20px;
+    font-size: small;
     margin-top: 3rem;
   }
   
@@ -306,6 +330,8 @@ html {
     border-radius: 20px;
 
   }
+
+
   .btn-primary {
     width: 80%;
     height: 59px;
@@ -317,5 +343,10 @@ html {
     margin-top: 5rem;
     transition: 0.5s;
   }
+
+  #file1{
+   
+  }
+ 
   
 }

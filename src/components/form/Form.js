@@ -1,6 +1,5 @@
 import "../../App.css";
 import React, { useContext, useState } from "react";
-import { GoFileSymlinkFile } from "react-icons/go";
 import { AppContext } from "../../context/AppContext";
 
 const Form = () => {
@@ -55,6 +54,7 @@ const Form = () => {
           <h3>Select file</h3>
           <input onChange={e => readFile(e)} type="file" id="file1" />
         </form>
+        <button  className="boton2" type="button" onClick={toggleMenu}>Save</button>
       </div>
 
       <div className={`menu2 ${menuVisible2 && 'show'}`}>
