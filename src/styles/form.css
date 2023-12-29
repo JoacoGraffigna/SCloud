@@ -97,13 +97,6 @@
 }
 
 
-.button-close {
-  font-size: 25px;
-  background-color: white;
-  color: black;
-  border-radius: 20px;
-}
-
 
 .btn-primary {
   width: 80%;
@@ -251,16 +244,21 @@
 .file-item-icons {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  min-width: 30px;
-  text-align: center;
+  gap: 10px;
+  min-width: 40px;
+  margin: 0px 0rem 0px 1.5rem;
 }
 .file-item-icons .tash, .file-item-icons .download {
   cursor: pointer;
-  padding: 3px;
+  display: flex;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+ 
+  justify-content: center;
+  color: white;
   border-radius: 50%;
-  border: 1px solid white;
-  font-size: 1.2rem;
+  font-size: 1.7rem;
 }
 
 
@@ -270,13 +268,9 @@
     right: 10px;
     background: none;
     border: none;
-    color:black;
-    background-color: white;
-    font-size: 30px;
+    color:rgb(255, 255, 255);
+    font-size: 35px;
     cursor: pointer;
-    width: 40px; 
-    height: 40px;
-    border-radius: 50%;
   }
 
   @media (min-width:700px) {

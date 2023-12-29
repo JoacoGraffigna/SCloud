@@ -2,6 +2,8 @@ import "../../styles/form.css"
 import { useContext, useEffect, useState } from "react";
 import { AppContext } from "../../context/AppContext";
 import CLOUD from '../home/CLOUD.png'
+import { FaDownload } from "react-icons/fa";
+import { IoIosCloseCircleOutline } from "react-icons/io";
 
 function Form() {
 
@@ -81,7 +83,7 @@ function Form() {
 
       
       <div className={`modal-add ${showModalAdd && 'show'}`}>
-        <button className="button-close" onClick={handleModalAdd}>X</button>
+        <button className="button-close" onClick={handleModalAdd}><IoIosCloseCircleOutline /></button>
         <h2>Upload file</h2>
         <form className="form">
           <input onChange={e => readFileUploaded(e)} type="file" className="input-file" />
@@ -103,8 +105,8 @@ function Form() {
               <p className="file-item-text-content">{file.content}</p>
             </div>
             <div className="file-item-icons">
-              <span className="tash" onClick={() => deleteFile(file.id)} >X</span>
-              <span className="download" onClick={() => downloadFile(file.id)} >↓</span>
+              <span className="tash" onClick={() => deleteFile(file.id)} ><IoIosCloseCircleOutline /></span>
+              <span className="download" onClick={() => downloadFile(file.id)} ><FaDownload /></span>
             </div>
           </div>
         ))}
