@@ -84,7 +84,6 @@ function Form() {
         <button className="button-close" onClick={handleModalAdd}>X</button>
         <h2>Upload file</h2>
         <form className="form">
-          <h3>Select file</h3>
           <input onChange={e => readFileUploaded(e)} type="file" className="input-file" />
         </form>
         
