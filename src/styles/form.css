@@ -3,7 +3,8 @@
   display: flex;
   align-items: center;
   justify-Content: space-between ;
-  width:100%;
+  width:90%;
+  margin: auto;
 }
 
 .pb button{
@@ -11,18 +12,18 @@
 }
 
 .title-container {
-  width: 40%;
+  width: 45%;
   text-align: center;
   justify-content: center;
   display: flex;
   background-color: white;
   border-radius: 10px;
   float: left;
-  margin: 20px 0px 0px 10px;
+  margin: 20px 0px 0px 0px;
 }
 
 .title-container img {
-  width: 181px;
+  width: 190px;
   height: 60px;
 }
 
@@ -36,7 +37,7 @@
   border-radius: 50%;
   transition: 0.5s;
   cursor: pointer;
-  margin: 20px 10px 0px 0px;
+  margin: 20px 0px 0px 0px;
 }
 
 
