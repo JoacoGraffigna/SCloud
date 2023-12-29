@@ -1,6 +1,7 @@
 import "../../styles/form.css"
 import { useContext, useEffect, useState } from "react";
 import { AppContext } from "../../context/AppContext";
+import CLOUD from '../home/CLOUD.png'
 
 function Form() {
 
@@ -38,11 +39,6 @@ function Form() {
 
 
 
-  // const toggleMenu2 = () => {
-  //   setMenuVisible2(!menuVisible2);
-  // };
-
-
   const readFileUploaded = (e) => {
     const fileUploaded = e.target.files[0];
     if (fileUploaded) {
@@ -66,16 +62,18 @@ function Form() {
 
 
   return (
-    <div className="container">
-
-      <div className="button-container">
-        <button className="button-add" onClick={handleModalAdd}>+ Add</button>
+    <div>
+       
+       <div className="pb">
+       <picture className='title-container'>
+        <img src={CLOUD} alt='SCLOUD icon'/>
+      </picture>
+        <button id="boton1" className="button-add" onClick={handleModalAdd}>+</button>
       </div>
+      
+      
 
-      {/* <div className="boton">
-        <button className="boton2" type="button" onClick={toggleMenu2}><GoFileSymlinkFile /> Files</button>
-      </div> */}
-
+      
       <div className={`modal-add ${showModalAdd && 'show'}`}>
         <button className="button-close" onClick={handleModalAdd}>X</button>
         <h2>Upload file</h2>
@@ -83,16 +81,16 @@ function Form() {
           <h3>Select file</h3>
           <input onChange={e => readFileUploaded(e)} type="file" />
         </form>
-        {/* <button  className="button-save" onClick={handleModalAdd}>Save</button> */}
+        
       </div>
 
-      {/* <div className={`menu2 ${menuVisible2 && 'show'}`}>
-        <button className="close-btn" onClick={toggleMenu2}>X</button>
-        <h2>Your files</h2>
-      </div> */}
 
 
       <div className="file-container">
+        <div className="button-container">
+        <button id="boton2" onClick={handleModalAdd}>+</button>
+        </div>
+      
       {filesList.map(file => (
           <div key={file.id} className="file-item">
             <div className="file-item-text">
