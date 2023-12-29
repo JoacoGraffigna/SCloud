@@ -58,19 +58,43 @@
   height: 80%;
 }
 
+.modal-add h2 {
+  margin-top: 2rem;
+  margin-bottom: 0rem;
+  padding-bottom: .5rem;
+  font-size:3rem;
+  width: 100%;
+  border-bottom: 1px solid rgb(31, 31, 31);
+}
 
 .modal-add  h3 {
-  margin-top: 5rem;
-  font-size:25px;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  font-size:2rem;
   width: 100%;
 }
 
-.modal-add h2 {
-  margin-top: 1rem;
-  margin-bottom: 0rem;
-  font-size:40px;
-  width: 100%;
+.input-file {
+  width: 90%;
+  padding: 10px 0;
+  position: relative;
+  font-size: 1.5rem;
 }
+.input-file::before {
+  background-color: #5678EF;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  content: "Select";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
 
 .button-close {
   font-size: 25px;
@@ -223,15 +247,18 @@
   overflow-wrap: break-word;
 }
 
-.file-item-tash {
+.file-item-icons {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
   min-width: 30px;
-  padding: 3px;
-  border: 1px solid white;
   text-align: center;
-  border-radius: 50%;
-  cursor: pointer;
 }
-.file-item-tash span {
+.file-item-icons .tash, .file-item-icons .download {
+  cursor: pointer;
+  padding: 3px;
+  border-radius: 50%;
+  border: 1px solid white;
   font-size: 1.2rem;
 }
 

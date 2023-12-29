@@ -8,17 +8,15 @@ function Form() {
   const { filesList, setFilesList } = useContext(AppContext);
 
   const [showModalAdd, setShowModalAdd] = useState(false);
-  // const [menuVisible2, setMenuVisible2] = useState(false);
 
+  useEffect(() => {
+    setFilesList(getFilesLoaded())
+  }, [])
   
   const handleModalAdd = () => {
     setShowModalAdd(!showModalAdd);
   };
 
-  
-  useEffect(() => {
-    setFilesList(getFilesLoaded())
-  }, [])
 
   const localStorageKey = "filesLoaded"
 
@@ -28,19 +26,30 @@ function Form() {
 
   const addNewFile = (newFile) => {
     localStorage.setItem(localStorageKey, JSON.stringify([...filesList, newFile]))
-    setFilesList([...filesList, newFile]);
+    setFilesList([...filesList, newFile])
   }
   const deleteFile = (id) => {
-    const files = filesList.filter(file => file.id != id)
+    const files = filesList.filter(file => file.id !== id)
     localStorage.setItem(localStorageKey, JSON.stringify(files))
     setFilesList(files)
   }
-
-
+  
+  const downloadFile = (id) => {
+    // crea el archivo
+    const file = filesList.find(file => file.id === id)
+    const blob = new Blob([file.content], {type: "octet/steam"})
+    const url = window.URL.createObjectURL(blob)
+    // crea el elemento enlace
+    const a = document.createElement("a")
+    a.href = url
+    a.download = file.name
+    a.click()
+    window.URL.revokeObjectURL(url)
+  }
 
 
   const readFileUploaded = (e) => {
-    const fileUploaded = e.target.files[0];
+    const fileUploaded = e.target.files[0]
     if (fileUploaded) {
       const read = new FileReader();
       read.onload = (e) => {
@@ -49,9 +58,6 @@ function Form() {
           content: e.target.result,
           id: crypto.randomUUID(),
         };
-        // let files = filesList;
-        // files.push(newFile)
-        // setFilesList(files);
         addNewFile(newFile)
 
       };
@@ -64,10 +70,10 @@ function Form() {
   return (
     <div>
        
-       <div className="pb">
-       <picture className='title-container'>
-        <img src={CLOUD} alt='SCLOUD icon'/>
-      </picture>
+      <div className="pb">
+        <picture className='title-container'>
+          <img src={CLOUD} alt='SCLOUD icon'/>
+        </picture>
         <button id="boton1" className="button-add" onClick={handleModalAdd}>+</button>
       </div>
       
@@ -79,7 +85,7 @@ function Form() {
         <h2>Upload file</h2>
         <form className="form">
           <h3>Select file</h3>
-          <input onChange={e => readFileUploaded(e)} type="file" />
+          <input onChange={e => readFileUploaded(e)} type="file" className="input-file" />
         </form>
         
       </div>
@@ -88,17 +94,18 @@ function Form() {
 
       <div className="file-container">
         <div className="button-container">
-        <button id="boton2" onClick={handleModalAdd}>+</button>
+          <button id="boton2" onClick={handleModalAdd}>+</button>
         </div>
       
-      {filesList.map(file => (
+        {filesList.map(file => (
           <div key={file.id} className="file-item">
             <div className="file-item-text">
               <p className="file-item-text-title">{file.name}</p>
               <p className="file-item-text-content">{file.content}</p>
             </div>
-            <div className="file-item-tash" onClick={() => deleteFile(file.id)} >
-              <span>X</span>
+            <div className="file-item-icons">
+              <span className="tash" onClick={() => deleteFile(file.id)} >X</span>
+              <span className="download" onClick={() => downloadFile(file.id)} >↓</span>
             </div>
           </div>
         ))}
