@@ -53,7 +53,7 @@ export default function Paged({data}) {
 
 
   return (
-    <Stack spacing={2} display={data.length <= itemsPerPage && 'none'} >
+    <Stack  spacing={2} display={data.length <= itemsPerPage && 'none'} >
       <Pagination size='small' count={pageNumberLimit} page={page} onChange={handleChange} />
     </Stack>
     
