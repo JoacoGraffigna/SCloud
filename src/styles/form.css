@@ -62,7 +62,7 @@
   margin-top: 2rem;
   margin-bottom: 0rem;
   padding-bottom: .5rem;
-  font-size:3rem;
+  font-size:2rem;
   width: 100%;
   border-bottom: 1px solid rgb(31, 31, 31);
 }
@@ -350,11 +350,14 @@
   }
 
 
+  .modal-add h2 {
+    margin-top: 2rem;
+    margin-bottom: 0rem;
+    padding-bottom: .5rem;
+    font-size:3rem;
+    width: 100%;
+    border-bottom: 1px solid rgb(31, 31, 31);
+  }
 
 
-
-}
-
-.MuiPagination-ul .css-wjh20t-MuiPagination-ul li{
-  background-color: white;
 }
