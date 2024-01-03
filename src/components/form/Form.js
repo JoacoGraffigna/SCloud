@@ -117,6 +117,10 @@ function Form() {
             className="input-file"
           />
         </form>
+        <form onSubmit={handleSubmit}>
+        <input className="input-file2" type="file" onChange={(e) => setFile(e.target.files[0])} />
+        <button type="submit">Upload</button>
+      </form>
       </div>
 
       <div className="file-container">
@@ -130,6 +134,7 @@ function Form() {
               +
             </button>
           </div>
+          
         </div>
 
         {showList &&
@@ -157,11 +162,6 @@ function Form() {
 
           
 
-      <form onSubmit={handleSubmit}>
-        <input className="input-file2" type="file" onChange={(e) => setFile(e.target.files[0])} />
-        <button type="submit">Upload</button>
-      </form>
-
       <div className="image-grid">
         {imageURLs.map((image) => (
           <div key={image.id} className="image-item">
@@ -173,6 +173,8 @@ function Form() {
           </div>
         ))}
       </div>
+
+      
 
 
     </div>
