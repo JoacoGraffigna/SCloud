@@ -38,6 +38,7 @@
   transition: 0.5s;
   cursor: pointer;
   margin: 20px 0px 0px 0px;
+  transition: transform 0.3s ease;
 }
 
 
@@ -116,18 +117,12 @@
 
 .button-add:hover {
   background-color: rgb(255, 255, 255);
-  transition: 0.5s;
+  transition: transform 0.3s ease;
   color: black;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 1);
-  transform: translateY(-3px);
+  transform: rotate(45deg)
 }
-.button-add:hover {
-  background-color: rgb(255, 255, 255);
-  transition: 0.5s;
-  color: black;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 1);
-  transform: translateY(-3px);
-}
+
 
 .show .button-save {
   width: 20%;
@@ -295,9 +290,18 @@
       color: #000000;
       background-color: white;
       transition: 1s;
-      transform: translateY(-3px);
+      transform: rotate(45deg);
       
     }
+
+    #boton2:active{
+      color: #000000;
+      background-color: white;
+      transition: 1s;
+      transform: rotate(45deg);
+      
+    }
+
 
     .container-up-box{
       width: 100%;
@@ -326,6 +330,14 @@
       display: none;
     }
 
+
+    .button-add:hover{
+      transform: rotate(45deg);
+    }
+
+    .button-add:active {
+      transform: rotate(45deg);
+    }
 
     .title-container {
       width:180px;
