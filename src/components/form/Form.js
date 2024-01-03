@@ -5,11 +5,37 @@ import CLOUD from "../home/CLOUD.png";
 import { FaDownload } from "react-icons/fa";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import Paged from "../pagination/Paged";
+import{uploadFile} from '../../firebase/config'
 
 function Form() {
   const { filesList, setFilesList, showList } = useContext(AppContext);
 
   const [showModalAdd, setShowModalAdd] = useState(false);
+  const [file, setFile] = useState(null);
+  const [imageURLs, setImageURLs] = useState([]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const result = await uploadFile(file);
+      setImageURLs((prevURLs) => [...prevURLs, { url: result, id: generateId() }]);
+      console.log(result);
+    } catch (error) {
+      console.log(error);
+      alert('Fallo al subir');
+    }
+  };
+  const handleDelete = (id) => {
+    setImageURLs((prevURLs) => prevURLs.filter((image) => image.id !== id));
+  };
+
+  const generateId = () => {
+    return Math.random().toString(36).substr(2, 9);
+  };
+
+
+
+
 
   useEffect(() => {
     setFilesList(getFilesLoaded());
@@ -127,6 +153,28 @@ function Form() {
             </div>
           ))}
       </div>
+
+
+          
+
+      <form onSubmit={handleSubmit}>
+        <input type="file" onChange={(e) => setFile(e.target.files[0])} />
+        <button type="submit">Upload</button>
+      </form>
+
+      <div className="image-grid">
+        {imageURLs.map((image) => (
+          <div key={image.id} className="image-item">
+            <img src={image.url} alt={`Preview ${image.id}`} />
+            <div className="button-group">
+              <button onClick={() => handleDelete(image.id)}>Delete</button>
+              
+            </div>
+          </div>
+        ))}
+      </div>
+
+
     </div>
   );
 }
