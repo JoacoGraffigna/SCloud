@@ -158,7 +158,7 @@ function Form() {
           
 
       <form onSubmit={handleSubmit}>
-        <input type="file" onChange={(e) => setFile(e.target.files[0])} />
+        <input className="input-file2" type="file" onChange={(e) => setFile(e.target.files[0])} />
         <button type="submit">Upload</button>
       </form>
 
