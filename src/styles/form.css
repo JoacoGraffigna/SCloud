@@ -335,53 +335,48 @@
       right: 2px;
   }
 
-  .image-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-  }
-  
+ 
   .image-item {
     position: relative;
-    margin: 10px;
-    border-radius: 5px;
+    display: inline-block;
+    border-radius: 10px;
+    border: 2px solid #010101;
+    display: block;
   }
   
   .image-wrapper {
     position: relative;
+    display: inline-block;
+    margin: auto;
+    justify-content: space-between;
+  }
+  
+  .image-wrapper img {
+    display: block;
+    max-width: 80%;
+    height: auto;
+    margin: 10px auto 10px auto;
   }
   
   .file-item-icons2 {
     position: absolute;
-    top: 5px;
-    right: 5px;
+    top: 10px;
+    right: 0;
     display: flex;
     flex-direction: column;
-    text-align:center ;
-
-    
-
+    align-items: flex-end;
   }
   
-  .tash2,
-  .download2 {
-    cursor: pointer;
-    justify-content: center;
-    align-items: center;
-    display: flex;
+  
+  .file-item-icons2 span {
+    font-size: 24px;
     margin-bottom: 5px;
-    width: 40px;
-    height: 40px;
-    background-color: #000000;
+    cursor: pointer;
+    height: 30px;
     color: white;
-    border-radius: 50%;
-    font-size: 20px;
-  }
+    width: 30px;
 
-  .tash2{
-    font-size: 30px;
   }
-
   @media (min-width:700px) {
     #boton2{
       display: flex;
@@ -485,5 +480,45 @@
     border-bottom: 1px solid rgb(31, 31, 31);
   }
 
+  .image-item {
+    position: relative;
+    display: inline-block;
+    border-radius: 10px;
+    border: 2px solid #010101;
+    display: block;
+    margin-bottom: 20px;
+
+  }
+  
+  .image-wrapper {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .image-wrapper img {
+    display: block;
+    height: auto;
+    margin: 10px auto 10px auto;
+  }
+  
+  .file-item-icons2 {
+    position: absolute;
+    top: 10px;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  
+  
+  .file-item-icons2 span {
+    font-size: 24px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    height: 30px;
+    color: white;
+    width: 30px;
+
+  }
 
 }

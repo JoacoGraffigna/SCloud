@@ -183,7 +183,9 @@ function Form() {
     <div key={image.id} className="image-item">
       <div className="image-wrapper">
         <img src={image.url} alt={`Preview ${image.id}`} />
-        <div className="file-item-icons2">
+        
+      </div>
+      <div className="file-item-icons2">
           <span className="tash2" onClick={() => handleDelete(image.id)}>
             <IoIosCloseCircleOutline />
           </span>
@@ -191,7 +193,6 @@ function Form() {
             <FaDownload />
           </span>
         </div>
-      </div>
     </div>
   ))}
 </div>
