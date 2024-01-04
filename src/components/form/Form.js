@@ -11,65 +11,55 @@ function Form() {
   const { filesList, setFilesList, showList } = useContext(AppContext);
 
   const [showModalAdd, setShowModalAdd] = useState(false);
-  const [file, setFile] = useState(null);
+  // const [file, setFile] = useState(null);
   const [imageURLs, setImageURLs] = useState([]);
+  const [loadingModal, setLoadingModal] = useState(false);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const result = await uploadFile(file);
-      setImageURLs((prevURLs) => [...prevURLs, { url: result, id: generateId() }]);
-      console.log(result);
-    } catch (error) {
-      console.log(error);
-      alert('Fallo al subir');
-    }
-  };
-  const handleDelete = (id) => {
-    setImageURLs((prevURLs) => prevURLs.filter((image) => image.id !== id));
-  };
-
-  const generateId = () => {
-    return Math.random().toString(36).substr(2, 9);
-  };
-
-
-
-
-
-  useEffect(() => {
-    setFilesList(getFilesLoaded());
-  }, []);
 
   const handleModalAdd = () => {
     setShowModalAdd(!showModalAdd);
   };
 
-  const localStorageKey = "filesLoaded";
+
+  // GETING DATA FILES
+
+  useEffect(() => {
+    setFilesList(getFilesLoaded());
+    setImageURLs(getImagesLoaded());
+  }, []);
+
+  const localStorageKeyFiles = "filesLoaded";
+  const localStorageKeyImages = "imagesLoaded";
 
   const getFilesLoaded = () => {
-    return JSON.parse(localStorage.getItem(localStorageKey)) || [];
+    return JSON.parse(localStorage.getItem(localStorageKeyFiles)) || [];
   };
+  const getImagesLoaded = () => {
+    return JSON.parse(localStorage.getItem(localStorageKeyImages)) || [];
+  }
+
+  
+  // FUNCTIONS HANDLE FILES
 
   const addNewFile = (newFile) => {
     localStorage.setItem(
-      localStorageKey,
+      localStorageKeyFiles,
       JSON.stringify([...filesList, newFile])
     );
     setFilesList([...filesList, newFile]);
   };
   const deleteFile = (id) => {
     const files = filesList.filter((file) => file.id !== id);
-    localStorage.setItem(localStorageKey, JSON.stringify(files));
+    localStorage.setItem(localStorageKeyFiles, JSON.stringify(files));
     setFilesList(files);
   };
 
   const downloadFile = (id) => {
-    // crea el archivo
+    // create file
     const file = filesList.find((file) => file.id === id);
     const blob = new Blob([file.content], { type: "octet/steam" });
     const url = window.URL.createObjectURL(blob);
-    // crea el elemento enlace
+    // create element to download file
     const a = document.createElement("a");
     a.href = url;
     a.download = file.name;
@@ -94,15 +84,46 @@ function Form() {
     }
   };
 
+  // FUNCTIONS HANDLE IMAGES
+
+  const handleSubmit = async (e) => {
+    // e.preventDefault();
+    try {
+      setLoadingModal(true);
+      const result = await uploadFile(e);
+      // setImageURLs((prevURLs) => [...prevURLs, { url: result, id: generateId() }]);
+      // console.log(result);
+      const newImage = {
+        url: result,
+        id: crypto.randomUUID(),
+      }
+      localStorage.setItem(localStorageKeyImages, JSON.stringify([...imageURLs, newImage]));
+      setImageURLs([...imageURLs, newImage])
+      setShowModalAdd(false);
+      setLoadingModal(false);
+    } catch (err) {
+      console.log(err);
+      alert('Failed to upload');
+    }
+  };
+  const handleDelete = (id) => {
+    const images = imageURLs.filter(image => image.id !== id);
+    localStorage.setItem(localStorageKeyImages, JSON.stringify(images));
+    setImageURLs(images);
+  };
+
+  // const generateId = () => {
+  //   return Math.random().toString(36).substr(2, 9);
+  // };
+
+
   return (
     <div>
       <div className="pb">
         <picture className="title-container">
           <img src={CLOUD} alt="SCLOUD icon" />
         </picture>
-        <button id="boton1" className="button-add" onClick={handleModalAdd}>
-          +
-        </button>
+        <button id="boton1" className="button-add" onClick={handleModalAdd}>+</button>
       </div>
 
       <div className={`modal-add ${showModalAdd && "show"}`}>
@@ -118,9 +139,10 @@ function Form() {
           />
         </form>
         <form onSubmit={handleSubmit}>
-        <input className="input-file2" type="file" onChange={(e) => setFile(e.target.files[0])} />
-        <button type="submit">Upload</button>
+        <input className="input-file2" type="file" onChange={(e) => handleSubmit(e.target.files[0])} />
+        {/* <button type="submit">Upload</button> */}
       </form>
+      {loadingModal && <p>LOADING...</p>}
       </div>
 
       <div className="file-container">
@@ -130,9 +152,7 @@ function Form() {
           </div>
 
           <div className="button-container">
-            <button id="boton2" onClick={handleModalAdd}>
-              +
-            </button>
+            <button id="boton2" onClick={handleModalAdd}>+</button>
           </div>
           
         </div>
@@ -157,25 +177,19 @@ function Form() {
               </div>
             </div>
           ))}
-      </div>
 
-
-          
-
-      <div className="image-grid">
-        {imageURLs.map((image) => (
-          <div key={image.id} className="image-item">
-            <img src={image.url} alt={`Preview ${image.id}`} />
-            <div className="button-group">
-              <button onClick={() => handleDelete(image.id)}>Delete</button>
-              
-            </div>
+          <div className="image-grid">
+            {imageURLs.map((image) => (
+              <div key={image.id} className="image-item">
+                <img src={image.url} alt={`Preview ${image.id}`} />
+                <div className="button-group">
+                  <button onClick={() => handleDelete(image.id)}>Delete</button>  
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
+
       </div>
-
-      
-
 
     </div>
   );
