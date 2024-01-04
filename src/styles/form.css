@@ -278,6 +278,26 @@
   font-size: 1.7rem;
 }
 
+.file-item-icons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 40px;
+  margin: 0px 0rem 0px 1.5rem;
+}
+.file-item-icons .tash, .file-item-icons .download {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+ 
+  justify-content: center;
+  color: white;
+  border-radius: 50%;
+  font-size: 1.7rem;
+}
+
 
 .button-close {
     position: absolute;
@@ -315,7 +335,50 @@
       right: 2px;
   }
 
+  .image-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  
+  .image-item {
+    position: relative;
+    margin: 10px;
+    border-radius: 5px;
+  }
+  
+  .image-wrapper {
+    position: relative;
+  }
+  
+  .file-item-icons2 {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    display: flex;
+    flex-direction: column;
+    text-align:center ;
 
+  }
+  
+  .tash2,
+  .download2 {
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin-bottom: 5px;
+    width: 40px;
+    height: 40px;
+    background-color: #000000;
+    color: white;
+    border-radius: 50%;
+    font-size: 20px;
+  }
+
+  .tash2{
+    font-size: 30px;
+  }
 
   @media (min-width:700px) {
     #boton2{

@@ -178,16 +178,23 @@ function Form() {
             </div>
           ))}
 
-          <div className="image-grid">
-            {imageURLs.map((image) => (
-              <div key={image.id} className="image-item">
-                <img src={image.url} alt={`Preview ${image.id}`} />
-                <div className="button-group">
-                  <button onClick={() => handleDelete(image.id)}>Delete</button>  
-                </div>
-              </div>
-            ))}
-          </div>
+<div className="image-grid">
+  {imageURLs.map((image) => (
+    <div key={image.id} className="image-item">
+      <div className="image-wrapper">
+        <img src={image.url} alt={`Preview ${image.id}`} />
+        <div className="file-item-icons2">
+          <span className="tash2" onClick={() => deleteFile(image.id)}>
+            <IoIosCloseCircleOutline />
+          </span>
+          <span className="download2" onClick={() => downloadFile(image.id)}>
+            <FaDownload />
+          </span>
+        </div>
+      </div>
+    </div>
+  ))}
+</div>
 
       </div>
 
