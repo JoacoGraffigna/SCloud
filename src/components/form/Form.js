@@ -184,7 +184,7 @@ function Form() {
       <div className="image-wrapper">
         <img src={image.url} alt={`Preview ${image.id}`} />
         <div className="file-item-icons2">
-          <span className="tash2" onClick={() => deleteFile(image.id)}>
+          <span className="tash2" onClick={() => handleDelete(image.id)}>
             <IoIosCloseCircleOutline />
           </span>
           <span className="download2" onClick={() => downloadFile(image.id)}>
