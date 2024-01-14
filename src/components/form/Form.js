@@ -21,6 +21,12 @@ function Form() {
   };
 
 
+  const downloadImage = (url, imageName) => {
+  
+      alert("the image will be downloaded")
+  };
+
+
   // GETING DATA FILES
 
   useEffect(() => {
@@ -189,7 +195,7 @@ function Form() {
           <span className="tash2" onClick={() => handleDelete(image.id)}>
             <IoIosCloseCircleOutline />
           </span>
-          <span className="download2" onClick={() => downloadFile(image.id)}>
+          <span className="download2" onClick={() => downloadImage(image.url, `image_${image.id}`)}>
             <FaDownload />
           </span>
         </div>
