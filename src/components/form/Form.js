@@ -26,7 +26,6 @@ function Form() {
       alert("the image will be downloaded")
   };
 
-
   // GETING DATA FILES
 
   useEffect(() => {

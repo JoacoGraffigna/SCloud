@@ -487,6 +487,9 @@
     border: 2px solid #010101;
     display: block;
     margin-bottom: 20px;
+    overflow-y: hidden;
+    min-height: 80px;
+    text-align: center;
 
   }
   
@@ -499,6 +502,7 @@
     display: block;
     height: auto;
     margin: 10px auto 10px auto;
+    max-width: 60%;
   }
   
   .file-item-icons2 {
